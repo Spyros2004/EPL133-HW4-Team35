@@ -21,4 +21,9 @@ public class TextGenerator {
 		}
 		return text.toString();
 	}
+	
+	public static void main(String[] args) throws FileNotFoundException {
+		TextGenerator tg = new TextGenerator("C:\\Users\\spyro\\Desktop\\Test.txt");
+		System.out.print(tg.getText());
+	}
 }

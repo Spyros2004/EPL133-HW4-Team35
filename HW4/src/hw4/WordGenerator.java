@@ -11,18 +11,20 @@ public class WordGenerator {
 		this.sentence = sentence;
 	}
 
-	public static List<String> getWords(String sentence) {
-		WordGenerator words = new WordGenerator(sentence);
-		return words.getWords();
+	public List<String> getWords() {
+		String[] words = sentence.split("[\\s,-:;!?'.\"]+");
+		List<String> wordList = new ArrayList<String>();
+		for (String word : words)
+			wordList.add(word.toLowerCase());
+		return wordList;
 	}
 
-	public List<String> getWords() {
-		String[] words = sentence.split("\\s+");
-		List<String> wordList = new ArrayList<String>();
-		for (String word : words) {
-			wordList.add(word);
-		}
-		return wordList;
+	public static void main(String[] args) {
+		WordGenerator wg = new WordGenerator("He,llo   \"---th.is\" 	isn't!: a Test. sent;ence?");
+		List<String> words = wg.getWords();
+		System.out.println("He,llo   \"---th.is\" 	isn't!: a Test. sent;ence?\n");
+		for (String word : words)
+			System.out.println(word);
 	}
 
 }
