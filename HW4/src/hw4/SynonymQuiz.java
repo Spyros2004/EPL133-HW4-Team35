@@ -11,20 +11,19 @@ public class SynonymQuiz {
 
 	public SynonymQuiz(String filename) {
 		questions = new ArrayList<SynonymQuestion>();
-		TextGenerator text = new TextGenerator(filename);
-		StringTokenizer textTokenizer = null;
+		TextGenerator fileText = new TextGenerator(filename);
+		String[] text = null;
 		try {
-			textTokenizer = new StringTokenizer(text.getText(), "\n");
+			text = fileText.getText().split("\n");
 		} catch (FileNotFoundException e) {
 			System.out.print("A file with the name " + filename + " does not exist.");
 			System.exit(0);
 		}
-		while (textTokenizer.hasMoreTokens()) {
-			String line = textTokenizer.nextToken();
-			StringTokenizer lineTokenizer = new StringTokenizer(line, " ");
-			String word = lineTokenizer.nextToken();
-			String answer = lineTokenizer.nextToken();
-			String[] options = { lineTokenizer.nextToken(), lineTokenizer.nextToken(), lineTokenizer.nextToken() };
+		for (String line : text) {
+			List<String> words = new WordGenerator(line).getWords();
+			String word = words.get(0);
+			String answer = words.get(1);
+			String[] options = { words.get(2),words.get(3), words.get(4) };
 			questions.add(new SynonymQuestion(word, options, answer));
 		}
 	}
