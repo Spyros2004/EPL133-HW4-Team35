@@ -18,6 +18,7 @@ public class TextGenerator {
 		while (inputStream.hasNextLine()) {
 			String line = inputStream.nextLine();
 			text.append(line);
+			text.append("\n");
 		}
 		return text.toString();
 	}

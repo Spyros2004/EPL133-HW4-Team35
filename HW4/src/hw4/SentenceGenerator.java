@@ -33,6 +33,7 @@ public class SentenceGenerator {
 	}
 
 	public List<List<String>> getSentenceLists() {
+		text.replaceAll("\n", "");
 		String[] sentences = text.split("[.?!]+");
 		List<List<String>> sentenceList = new ArrayList<List<String>>();
 		for (String sentence : sentences) {
@@ -43,7 +44,7 @@ public class SentenceGenerator {
 	}
 
 	public static void main(String[] args) {
-		SentenceGenerator sg = new SentenceGenerator("    so     sell . hello THERE FRIEND! How're you DOing? I'm fine    .");
+		SentenceGenerator sg = new SentenceGenerator("    so     \nsell . hello THERE FRIEND! How're\n you DOing? I'm fine    .\n\n");
 		List<List<String>> sentences = sg.getSentenceLists();
 		for (List<String> sentence : sentences) {
 			for (String word : sentence) {
