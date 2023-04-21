@@ -26,5 +26,6 @@ public class WordGenerator {
 		for (String word : words)
 			System.out.println(word);
 	}
+	
 
 }
