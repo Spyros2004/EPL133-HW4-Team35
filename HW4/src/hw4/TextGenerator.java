@@ -20,6 +20,7 @@ public class TextGenerator {
 			text.append(line);
 			text.append("\n");
 		}
+		inputStream.close();
 		return text.toString();
 	}
 }

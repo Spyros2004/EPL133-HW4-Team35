@@ -32,7 +32,6 @@ public class SynonymQuiz {
 
 	public static double runSimilarityTest(String filename,
 			HashMap<String, HashMap<String, Integer>> semantic_descriptors) {
-
 		PrintWriter outputStream = null;
 		try {
 			outputStream = new PrintWriter(new FileOutputStream("Answers.txt"));
@@ -40,21 +39,18 @@ public class SynonymQuiz {
 			System.out.println("Error opening the file Answers.txt.");
 			System.exit(0);
 		}
-
 		SynonymQuiz quiz = new SynonymQuiz(filename);
 		int counter = 0;
-
 		for (int i = 0; i < quiz.getQuestionCount(); i++) {
 			SynonymQuestion question = quiz.getQueston(i);
 			String answer = MostSimilarWord.most_similar_word(question.getWord(), question.getOptions(),
 					semantic_descriptors);
-			outputStream.println("Answer for question 1: " + answer);
-			if (answer == question.getAnswer())
+			outputStream.println("Answer for question " + (i + 1) + " : " + answer);
+			if (answer.equals(question.getAnswer()))
 				counter++;
 		}
-
-		double percentage = counter / quiz.getQuestionCount();
-
+		outputStream.close();
+		double percentage = (double) counter / quiz.getQuestionCount();
 		return percentage;
 	}
 

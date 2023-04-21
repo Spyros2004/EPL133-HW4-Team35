@@ -19,7 +19,7 @@ public class SynonymQuestion {
 	public String[] getOptions() {
 		return options;
 	}
-	
+
 	public String getAnswer() {
 		return answer;
 	}
