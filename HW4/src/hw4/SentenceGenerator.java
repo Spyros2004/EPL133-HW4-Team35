@@ -42,18 +42,4 @@ public class SentenceGenerator {
 		}
 		return sentenceList;
 	}
-
-	public static void main(String[] args) {
-		SentenceGenerator sg = new SentenceGenerator("    so     \nsell . hello THERE FRIEND! How're\n you DOing? I'm fine    .\n\n");
-		List<List<String>> sentences = sg.getSentenceLists();
-		for (List<String> sentence : sentences) {
-			for (String word : sentence) {
-				System.out.print(word+" ");
-			}
-			System.out.println();
-		}
-	}
-
-
-
 }

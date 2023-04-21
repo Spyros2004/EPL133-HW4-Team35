@@ -44,11 +44,6 @@ public class SemanticDescriptors {
 		
 		return d;
 	}
-	 public static void main(String[] args) {
-		 
-		 System.out.println(createSemanticDescriptors(SentenceGenerator.getSentenceLists("I am a sick man. I am a spiteful man. I am an unattractive man. I believe my liver is diseased.However, I know nothing at all about my disease, and do not know for certain what ails me.")).toString());
-
-	 }
 }
 
 

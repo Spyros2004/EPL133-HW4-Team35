@@ -52,13 +52,4 @@ public class MostSimilarWord {
 		}
 		return Math.sqrt(sum_of_squares);
 	}
-	
-	
-	
-	
-	public static void main(String[] args) {
-		
-	
-	}
-
 }

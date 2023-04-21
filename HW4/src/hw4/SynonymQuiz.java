@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.FileOutputStream;
 
 public class SynonymQuiz {
 
@@ -23,30 +25,38 @@ public class SynonymQuiz {
 			List<String> words = new WordGenerator(line).getWords();
 			String word = words.get(0);
 			String answer = words.get(1);
-			String[] options = { words.get(2),words.get(3), words.get(4) };
+			String[] options = { words.get(2), words.get(3), words.get(4) };
 			questions.add(new SynonymQuestion(word, options, answer));
 		}
 	}
-	
-	public static double runSimilarityTest(String filename, HashMap<String, HashMap<String, Integer>> semantic_descriptors) {
-		
-		SynonymQuiz quiz=new SynonymQuiz(filename);
-		int counter=0;
-		
-		for(int i=0; i<quiz.getQuestionCount(); i++) {
+
+	public static double runSimilarityTest(String filename,
+			HashMap<String, HashMap<String, Integer>> semantic_descriptors) {
+
+		PrintWriter outputStream = null;
+		try {
+			outputStream = new PrintWriter(new FileOutputStream("Answers.txt"));
+		} catch (FileNotFoundException e) {
+			System.out.println("Error opening the file Answers.txt.");
+			System.exit(0);
+		}
+
+		SynonymQuiz quiz = new SynonymQuiz(filename);
+		int counter = 0;
+
+		for (int i = 0; i < quiz.getQuestionCount(); i++) {
 			SynonymQuestion question = quiz.getQueston(i);
-			String answer=MostSimilarWord.most_similar_word(question.getWord(), question.getOptions(),  semantic_descriptors);
-			if(answer==question.getAnswer())
+			String answer = MostSimilarWord.most_similar_word(question.getWord(), question.getOptions(),
+					semantic_descriptors);
+			outputStream.println("Answer for question 1: " + answer);
+			if (answer == question.getAnswer())
 				counter++;
 		}
-		
-		
-		double percentage=counter/quiz.getQuestionCount();
-		
-		 return percentage;
+
+		double percentage = counter / quiz.getQuestionCount();
+
+		return percentage;
 	}
-	
-	
 
 	public SynonymQuestion getQueston(int index) {
 		return questions.get(index);
@@ -54,15 +64,5 @@ public class SynonymQuiz {
 
 	public int getQuestionCount() {
 		return questions.size();
-	}
-
-	public static void main(String[] args) {
-		SynonymQuiz quiz = new SynonymQuiz("C:\\Users\\spyro\\Desktop\\Test.txt");
-		for (int i = 0; i < quiz.getQuestionCount(); i++) {
-			System.out.print(quiz.getQueston(i).getWord() + " " + quiz.getQueston(i).getAnswer() + " ");
-			for (String word : quiz.getQueston(i).getOptions())
-				System.out.print(word + " ");
-			System.out.println();
-		}
 	}
 }

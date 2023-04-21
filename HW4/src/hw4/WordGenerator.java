@@ -18,14 +18,4 @@ public class WordGenerator {
 			wordList.add(word.toLowerCase());
 		return wordList;
 	}
-
-	public static void main(String[] args) {
-		WordGenerator wg = new WordGenerator("He,llo   \"---th.is\" 	isn't!: a Test. sent;ence?");
-		List<String> words = wg.getWords();
-		System.out.println("He,llo   \"---th.is\" 	isn't!: a Test. sent;ence?\n");
-		for (String word : words)
-			System.out.println(word);
-	}
-	
-
 }
