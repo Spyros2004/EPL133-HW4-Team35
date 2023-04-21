@@ -1,9 +1,9 @@
 package hw4;
 
-import java.io.FileNotFoundException;
-import java.util.List;
+import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.StringTokenizer;
+import java.util.List;
+import java.io.FileNotFoundException;
 
 public class SynonymQuiz {
 
@@ -27,6 +27,26 @@ public class SynonymQuiz {
 			questions.add(new SynonymQuestion(word, options, answer));
 		}
 	}
+	
+	public static double runSimilarityTest(String filename, HashMap<String, HashMap<String, Integer>> semantic_descriptors) {
+		
+		SynonymQuiz quiz=new SynonymQuiz(filename);
+		int counter=0;
+		
+		for(int i=0; i<quiz.getQuestionCount(); i++) {
+			SynonymQuestion question = quiz.getQueston(i);
+			String answer=MostSimilarWord.most_similar_word(question.getWord(), question.getOptions(),  semantic_descriptors);
+			if(answer==question.getAnswer())
+				counter++;
+		}
+		
+		
+		double percentage=counter/quiz.getQuestionCount();
+		
+		 return percentage;
+	}
+	
+	
 
 	public SynonymQuestion getQueston(int index) {
 		return questions.get(index);

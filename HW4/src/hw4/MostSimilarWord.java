@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class MostSimilarWord {
 
-	public String most_similar_word(String word, String[] choices, HashMap<String, HashMap<String, Integer>> semantic_descriptors) {
+	public static String most_similar_word(String word, String[] choices, HashMap<String, HashMap<String, Integer>> semantic_descriptors) {
 		
 		double sim=0.0;
 		double max=0.0;
