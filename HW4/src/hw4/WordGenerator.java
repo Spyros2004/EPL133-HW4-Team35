@@ -15,7 +15,8 @@ public class WordGenerator {
 		String[] words = sentence.split("[\\s,-:;!?'.\"]+");
 		List<String> wordList = new ArrayList<String>();
 		for (String word : words)
-			wordList.add(word.toLowerCase());
+			if (!word.equals(""))
+				wordList.add(word.toLowerCase());
 		return wordList;
 	}
 }
