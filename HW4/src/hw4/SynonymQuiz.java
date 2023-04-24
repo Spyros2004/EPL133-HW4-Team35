@@ -23,10 +23,12 @@ public class SynonymQuiz {
 		}
 		for (String line : text) {
 			List<String> words = new WordGenerator(line).getWords();
+			List<String> choices = new ArrayList<String>();
 			String word = words.get(0);
 			String answer = words.get(1);
-			String[] options = { words.get(2), words.get(3), words.get(4) };
-			questions.add(new SynonymQuestion(word, options, answer));
+			for (int i = 2; i < words.size(); i++)
+				choices.add(words.get(i));
+			questions.add(new SynonymQuestion(word, choices.toArray(new String[choices.size()]), answer));
 		}
 	}
 
@@ -43,7 +45,7 @@ public class SynonymQuiz {
 		int counter = 0;
 		for (int i = 0; i < quiz.getQuestionCount(); i++) {
 			SynonymQuestion question = quiz.getQueston(i);
-			String answer = MostSimilarWord.most_similar_word(question.getWord(), question.getOptions(),
+			String answer = MostSimilarWord.mostSimilarWord(question.getWord(), question.getChoices(),
 					semantic_descriptors);
 			outputStream.println("Answer for question " + (i + 1) + " : " + answer);
 			if (answer.equals(question.getAnswer()))
@@ -61,4 +63,5 @@ public class SynonymQuiz {
 	public int getQuestionCount() {
 		return questions.size();
 	}
+
 }

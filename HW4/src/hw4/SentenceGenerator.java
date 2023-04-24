@@ -33,13 +33,15 @@ public class SentenceGenerator {
 	}
 
 	public List<List<String>> getSentenceLists() {
-		text.replaceAll("\n", "");
 		String[] sentences = text.split("[.?!]+");
 		List<List<String>> sentenceList = new ArrayList<List<String>>();
 		for (String sentence : sentences) {
-			WordGenerator words = new WordGenerator(sentence.trim());
-			sentenceList.add(words.getWords());
+			if (!sentence.isBlank() && !sentence.isEmpty()) {
+				WordGenerator words = new WordGenerator(sentence.trim());
+				sentenceList.add(words.getWords());
+			}
 		}
 		return sentenceList;
 	}
+
 }

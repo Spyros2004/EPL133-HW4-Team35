@@ -3,12 +3,12 @@ package hw4;
 public class SynonymQuestion {
 
 	private String word;
-	private String[] options;
+	private String[] choices;
 	private String answer;
 
 	public SynonymQuestion(String word, String[] options, String answer) {
 		this.word = word;
-		this.options = options;
+		this.choices = options;
 		this.answer = answer;
 	}
 
@@ -16,11 +16,12 @@ public class SynonymQuestion {
 		return word;
 	}
 
-	public String[] getOptions() {
-		return options;
+	public String[] getChoices() {
+		return choices;
 	}
 
 	public String getAnswer() {
 		return answer;
 	}
+	
 }
