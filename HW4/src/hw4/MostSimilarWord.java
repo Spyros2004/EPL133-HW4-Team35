@@ -2,8 +2,26 @@ package hw4;
 
 import java.util.HashMap;
 
+
+/**
+ * The MostSimilarWord class have two methods to find the most similar word
+ * to a specific word for a hashMap with other words.
+ * @author kkypri06
+ * @since 10/04/22
+ */
 public class MostSimilarWord {
 
+	
+	/**
+	 * Finds the most similar word to the given word among a list of choices based on their
+	 * semantic descriptors.
+	 *
+	 * @param word the word to find the most similar word for
+	 * @param choices the list of words to choose from
+	 * @param semanticDescriptors the map of semantic descriptors for each word
+	 * @return the most similar word in the choices list, or "-1" if the given word is not in
+	 *         the semantic descriptors map
+	 */
 	public static String mostSimilarWord(String word, String[] choices, HashMap<String, HashMap<String, Integer>> semanticDescriptors) {
 		double max = 0;
 		int asnwerIndex = 0;
@@ -30,7 +48,14 @@ public class MostSimilarWord {
 		}
 		return choices[asnwerIndex];
 	}
-
+	
+	
+	/**
+	 * Calculates the norm of the given vector.
+	 *
+	 * @param vector the vector to calculate the norm for
+	 * @return the norm of the vector
+	 */
 	private static double norm(HashMap<String, Integer> vector) {
 		double sumOfSquares = 0;
 		for (String simWord : vector.keySet()) {
