@@ -7,7 +7,8 @@ import java.util.List;
  * The SemanticDescriptors class have one static method for creating semantic descriptors hashMap
  * for a given list of sentences.
  * @author kkypri06
- * @since 10/04/22
+ * @version 1.1
+ * @since 20/04/23
  */
 public class SemanticDescriptors {
 
@@ -17,6 +18,7 @@ public class SemanticDescriptors {
 	 *
 	 * @param sentences the list of sentences to create semantic descriptors for
 	 * @return a hashMap of words that represents semantic descriptors
+	 * @since 1.0
 	 */
 	public static HashMap<String, HashMap<String, Integer>> createSemanticDescriptors(List<List<String>> sentences) {
 		HashMap<String, HashMap<String, Integer>> semanticDescriptors = new HashMap<String, HashMap<String, Integer>>();

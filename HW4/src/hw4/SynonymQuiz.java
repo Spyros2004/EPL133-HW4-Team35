@@ -8,12 +8,18 @@ import java.io.PrintWriter;
 import java.io.FileOutputStream;
 /**
  * The SynonymQuiz class represents a synonym quiz with a list of synonym questions.
- * @author kkypri06 Spyros...
+ * @author kkypri06 , ssachm02
+ * @version 1.1
  * @since 10/04/22
  *
  */
 public class SynonymQuiz {
-
+	
+	/**
+	 * This is the list of {@link SynonymQuestion} in the quiz.
+	 * 
+	 * @since 1.0
+	 */
 	private List<SynonymQuestion> questions;
 	
 	/**
@@ -21,6 +27,7 @@ public class SynonymQuiz {
 	 * Each line of the file contain a word followed by a list 
 	 * of choices and then the answer (choices for the quiz). 
 	 * @param filename the name of the file to read from
+	 * @since 1.0
 	 */
 	public SynonymQuiz(String filename) {
 		questions = new ArrayList<SynonymQuestion>();
@@ -50,6 +57,7 @@ public class SynonymQuiz {
 	 * @param filename the name of the file to read the quiz questions from
 	 * @param semantic_descriptors the HashMap of semantic descriptors to use in the similarity calculation
 	 * @return the percentage of correct answers in the test
+	 * @since 1.0
 	 */
 	public static double runSimilarityTest(String filename,
 			HashMap<String, HashMap<String, Integer>> semantic_descriptors) {
@@ -80,6 +88,7 @@ public class SynonymQuiz {
 	 * Returns the SynonymQuestion object at the specified index in the quiz.
 	 * @param index the index of the question to return
 	 * @return the SynonymQuestion object at the specified index
+	 * @since 1.0
 	 */
 	public SynonymQuestion getQueston(int index) {
 		return questions.get(index);
@@ -89,6 +98,7 @@ public class SynonymQuiz {
 	/**
 	 * Returns the number of questions in the quiz.
 	 * @return the number of questions in the quiz
+	 * @since 1.0
 	 */
 	public int getQuestionCount() {
 		return questions.size();
